@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ARGOBOT_PERSONAL_TOKEN }}
 
       - name: Check if the published tag is well formed and setup vars
         run: |
@@ -144,8 +144,6 @@ jobs:
           echo "Creating release ${RELEASE_TAG}"
           git tag ${RELEASE_TAG}
       - name: Push changes to release branch
-        env:
-            GITHUB_TOKEN: ${{ secrets.ARGOBOT_PERSONAL_TOKEN }}
         run: |
           set -ue
           git push origin ${TARGET_BRANCH}
