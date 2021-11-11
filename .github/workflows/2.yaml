@@ -1,0 +1,21 @@
+name: Workflow2
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  work2:
+    name: work2 on trigger ${{ github.event.inputs.release-tag-name }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+        
+      - name: echo
+        run: |
+          echo "task completed"
